@@ -1,4 +1,6 @@
 ## makefile 0.4
+#オブジェクトファイル生成は保留 debugの指定もなんか変だが。
+
 # コンパイラ
 CC = c++
 
@@ -60,6 +62,7 @@ all:	clean $(OBJS) $(TARGET)
 dbug:
 #$(CC) $(CFLAGS) -include ./include/$(HEADER) ./src/$(SRCS) -g
 	$(CC) $(CFLAGS) -include ./include/$(HEADER) ./src/$(SRCS) -g0 -g
+	-gdb ./a.out
 
 echo:
 	@echo "--** ECHO **--"
