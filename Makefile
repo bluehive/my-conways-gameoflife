@@ -1,3 +1,4 @@
+## makefile 0.4
 # コンパイラ
 CC = c++
 
@@ -52,9 +53,16 @@ $(TARGET):	$(SRCS) $(HEADER) $(HEADER).gch
 	 #$(CC) $(CFLAGS)-o $@ $^ $(LIBDIR) $(LIBS)
 	$(CC) $(CFLAGS) -include $(HEADER) $< -o $@
 
-
 #同時実施
 all:	clean $(OBJS) $(TARGET)
+
+#ｄｅｂａｇｕ
+dbug:
+#$(CC) $(CFLAGS) -include ./include/$(HEADER) ./src/$(SRCS) -g
+	$(CC) $(CFLAGS) -include ./include/$(HEADER) ./src/$(SRCS) -g0 -g
+
+echo:
+	@echo "--** ECHO **--"
 
 #クリーンアップ
 clean:
@@ -66,7 +74,7 @@ run:	$(TARGET)
 	-mv ./$(TARGET) ./bin/
 	./bin/$(TARGET)
 
-.PHONY : run clean mk
+.PHONY : run clean mk dbug echo
 
 
 ################################
